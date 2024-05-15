@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, DECIMAL
-from api.core.database import Base
+from app.api.core.database import Base
 
 class Servicio(Base):
     __tablename__ = 'servicios'

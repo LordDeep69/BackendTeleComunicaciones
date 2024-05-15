@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Date, Enum
-from api.core.database import Base
+from app.api.core.database import Base
+from sqlalchemy.orm import relationship
 
 class Empleado(Base):
     __tablename__ = 'empleados'
@@ -14,3 +15,4 @@ class Empleado(Base):
     departamento = Column(String(100), nullable=False)
     estado_laboral = Column(Enum('activo', 'inactivo'), nullable=False)
     fecha_registro = Column(Date, nullable=False)
+    tickets_resueltos = relationship('TicketSoporte', back_populates='empleado', primaryjoin='Empleado.id==TicketSoporte.empleado_id')

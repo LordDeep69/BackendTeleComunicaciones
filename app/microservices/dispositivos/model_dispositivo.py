@@ -1,14 +1,14 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
-from api.core.database import Base
 from sqlalchemy.orm import relationship
+from app.api.core.database import Base
 
 class Dispositivo(Base):
-    __tablename__ = 'dispositivos'
+    __tablename__ = 'Dispositivos'
 
     id = Column(Integer, primary_key=True, index=True)
-    cliente_id = Column(Integer, ForeignKey('clientes.id'))
-    tipo_dispositivo = Column(String(100), nullable=False)
-    modelo = Column(String(100), nullable=False)
-    numero_serie = Column(String(100), nullable=False)
-    estado = Column(String(50), nullable=False)
-    cliente = relationship("Cliente", back_populates="dispositivos")
+    cliente_id = Column(Integer, ForeignKey('Cliente.id'))
+    tipo_dispositipo = Column(String(50))
+    modelo = Column(String(100))
+    numero_serie = Column(String(50))
+    estado = Column(String(50))
+    cliente = relationship('Cliente', back_populates='dispositivos')

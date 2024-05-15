@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String, Date
-from api.core.database import Base
+from sqlalchemy.orm import relationship
+from app.api.core.database import Base
 
 class Cliente(Base):
-    __tablename__ = 'clientes'
+    __tablename__ = 'Cliente'  # Nombre de la tabla como en la base de datos
 
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String(100), nullable=False)
@@ -13,5 +14,5 @@ class Cliente(Base):
     contrasena = Column(String(255), nullable=False)
     foto = Column(String(255))
     fecha_registro = Column(Date)
-
-    # Aquí puedes agregar métodos de instancia o de clase si es necesario
+    cuentas = relationship('CuentaCliente', back_populates='cliente', primaryjoin='Cliente.id==CuentaCliente.id_cliente')
+    # dispositivos = relationship('Dispositivo', back_populates='cliente')

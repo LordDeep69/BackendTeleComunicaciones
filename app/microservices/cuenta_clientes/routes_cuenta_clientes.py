@@ -6,7 +6,7 @@ from .crud_cuenta_cliente import (
     update_cuenta_cliente, delete_cuenta_cliente
 )
 from .schema_cuenta_cliente import CuentaClienteCreate, CuentaClienteUpdate, CuentaCliente
-from api.core.database import get_db
+from app.microservices.clientes.routes_cliente import get_db
 
 router = APIRouter()
 

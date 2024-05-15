@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from .crud_cliente import get_cliente, get_clientes, create_cliente, update_cliente, delete_cliente
 from .schema_cliente import ClienteCreate, ClienteUpdate, Cliente
-from api.core.database import SessionLocal
+from app.api.core.database import SessionLocal
 
 router = APIRouter()
 

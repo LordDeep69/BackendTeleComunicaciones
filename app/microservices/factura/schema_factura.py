@@ -6,7 +6,7 @@ class FacturaBase(BaseModel):
     id_cuenta: int
     fecha_emision: date
     fecha_vencimiento: date
-    total: float
+    total: float = Field(..., example=0.0)
 
     class Config:
         orm_mode = True

@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text, DECIMAL
-from api.core.database import Base
+from app.api.core.database import Base
 
 class Plan(Base):
     __tablename__ = 'planes'

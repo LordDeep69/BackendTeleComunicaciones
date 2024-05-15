@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, Text, DateTime, Enum, ForeignKey
-from api.core.database import Base
+from app.api.core.database import Base
 from sqlalchemy.orm import relationship
 
 class Notificacion(Base):

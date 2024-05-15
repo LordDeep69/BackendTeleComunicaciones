@@ -1,13 +1,14 @@
 from sqlalchemy import Column, Integer, DECIMAL, Date, ForeignKey
-from api.core.database import Base
 from sqlalchemy.orm import relationship
+from app.api.core.database import Base
 
 class Factura(Base):
-    __tablename__ = 'facturas'
+    __tablename__ = 'Factura'
 
     id = Column(Integer, primary_key=True, index=True)
-    id_cuenta = Column(Integer, ForeignKey('cuenta_clientes.id'))
-    fecha_emision = Column(Date, nullable=False)
-    fecha_vencimiento = Column(Date, nullable=False)
-    total = Column(DECIMAL(10, 2), nullable=False)
-    cuenta_cliente = relationship("CuentaCliente", back_populates="facturas")
+    id_cuenta = Column(Integer, ForeignKey('CuentaCliente.id'))
+    fecha_emision = Column(Date)
+    fecha_vencimiento = Column(Date)
+    total = Column(DECIMAL(10, 2))
+    cuenta_cliente = relationship('CuentaCliente', back_populates='facturas')
+    pagos = relationship('Pago', back_populates='factura')

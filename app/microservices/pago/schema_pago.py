@@ -1,12 +1,11 @@
 from pydantic import BaseModel, Field
-from typing import Optional
 from datetime import date
 
 class PagoBase(BaseModel):
     id_factura: int
     monto: float
     fecha_pago: date
-    metodo_pago: str
+    metodo_pago: str = Field(..., max_length=50)
 
     class Config:
         orm_mode = True

@@ -6,6 +6,7 @@ class CuentaClienteBase(BaseModel):
     id_cliente: int
     estado: str = Field(..., example="activo")
     saldo: float = Field(..., example=0.0)
+    fecha_creacion: str = Field(...,  max_length=100)
 
     class Config:
         orm_mode = True

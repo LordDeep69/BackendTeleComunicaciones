@@ -1,13 +1,15 @@
-from sqlalchemy import Column, Integer, String, Date, ForeignKey, Enum, DECIMAL
+from sqlalchemy import Column, Integer, DECIMAL, Date, Enum, ForeignKey
 from sqlalchemy.orm import relationship
-from api.core.database import Base
+from app.api.core.database import Base
 
 class CuentaCliente(Base):
-    __tablename__ = 'cuenta_cliente'
+    __tablename__ = 'CuentaCliente'  # Nombre de la tabla como en la base de datos
 
     id = Column(Integer, primary_key=True, index=True)
-    id_cliente = Column(Integer, ForeignKey('clientes.id'))
+    id_cliente = Column(Integer, ForeignKey('Cliente.id'))
     estado = Column(Enum('activo', 'suspendido', 'cancelado'))
     saldo = Column(DECIMAL(10, 2))
     fecha_creacion = Column(Date)
-    cliente = relationship("Cliente", back_populates="cuentas")
+    cliente = relationship('Cliente', back_populates='cuentas', primaryjoin='CuentaCliente.id_cliente==Cliente.id')
+    facturas = relationship('Factura', back_populates='cuenta_cliente', primaryjoin='CuentaCliente.id==Factura.id_cuenta')
+
