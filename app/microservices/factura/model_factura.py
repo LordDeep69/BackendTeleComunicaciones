@@ -10,5 +10,5 @@ class Factura(Base):
     fecha_emision = Column(Date)
     fecha_vencimiento = Column(Date)
     total = Column(DECIMAL(10, 2))
-    cuenta_cliente = relationship('CuentaCliente', back_populates='facturas')
-    pagos = relationship('Pago', back_populates='factura')
+    cuenta_cliente = relationship('CuentaCliente', back_populates='facturas', primaryjoin='Factura.id_cuenta==CuentaCliente.id')
+    pagos = relationship('Pago', back_populates='factura', primaryjoin='Factura.id==Pago.id_factura')

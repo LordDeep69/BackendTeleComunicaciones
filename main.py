@@ -8,7 +8,7 @@ from app.microservices.cuenta_clientes.routes_cuenta_clientes import router as c
 # from app.microservices.empleado.routes_empleado import router as empleado_router
 # from app.microservices.servicio.routes_servicio import router as servicio_router
 # from app.microservices.ticket_soporte.routes_ticket_soporte import router as ticket_router
-# from app.microservices.dispositivos.routes_dispositivo import router as dispositivo_router
+from app.microservices.dispositivos.routes_dispositivo import router as dispositivo_router
 # from app.microservices.notificaciones.routes_notificacion import router as notificaciones_router
 # from app.microservices.registro_uso_servicios.routes_registro_uso_servicios import router as registr_router
 # from app.microservices.plan.routes_plan import router as plan_router
@@ -29,7 +29,7 @@ app.include_router(factura_router)
 app.include_router(cuenta_cliente_router)
 # app.include_router(empleado_router)
 # app.include_router(ticket_router)
-# app.include_router(dispositivo_router)
+app.include_router(dispositivo_router)
 # app.include_router(notificaciones_router)
 # app.include_router(plan_router)
 # app.include_router(servicio_router)

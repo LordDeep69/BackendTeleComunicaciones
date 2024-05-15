@@ -3,7 +3,7 @@ from app.api.core.database import Base
 from sqlalchemy.orm import relationship
 
 class Empleado(Base):
-    __tablename__ = 'empleados'
+    __tablename__ = 'Empleado'
 
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String(100), nullable=False)

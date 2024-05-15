@@ -11,6 +11,6 @@ class TicketSoporte(Base):
     estado_ticket = Column(String(50), nullable=False)
     fecha_creacion = Column(DateTime, nullable=False)
     fecha_resolucion = Column(DateTime)
-    empleado_id = Column(Integer, ForeignKey('empleados.id'))
+    empleado_id = Column(Integer, ForeignKey('Empleado.id'))
     cliente = relationship("Cliente", back_populates="tickets_soporte", primaryjoin='TicketSoporte.cliente_id==Cliente.id')
-    empleado = relationship("Empleado", back_populates="tickets_resueltos", primaryjoin='TicketSoporte.cliente_id==Empleado.id')
+    empleado = relationship("Empleado", back_populates="tickets_resueltos", primaryjoin='TicketSoporte.empleado_id==Empleado.id')

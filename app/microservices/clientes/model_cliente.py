@@ -15,4 +15,5 @@ class Cliente(Base):
     foto = Column(String(255))
     fecha_registro = Column(Date)
     cuentas = relationship('CuentaCliente', back_populates='cliente', primaryjoin='Cliente.id==CuentaCliente.id_cliente')
-    # dispositivos = relationship('Dispositivo', back_populates='cliente')
+    dispositivos = relationship('Dispositivo', back_populates='cliente', primaryjoin='Cliente.id==Dispositivo.cliente_id')
+    tickets_soporte = relationship('TicketSoporte', back_populates='cliente', primaryjoin='Cliente.id==TicketSoporte.cliente_id')
