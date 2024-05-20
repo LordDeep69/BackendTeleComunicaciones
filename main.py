@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.microservices.clientes.routes_cliente import router as cliente_router
 from app.microservices.cuenta_clientes.routes_cuenta_clientes import router as cuenta_cliente_router
 from app.microservices.factura.routes_factura import router as factura_router
@@ -13,11 +14,22 @@ from app.microservices.plan.routes_plan import router as plan_router
 
 
 
-
-
 # Importar los demás routers aquí
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:5173",  # Origen del cliente
+    # Puedes agregar más orígenes si es necesario
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Registrar los routers
 app.include_router(cliente_router)
